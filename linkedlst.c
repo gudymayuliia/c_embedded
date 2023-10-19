@@ -22,11 +22,7 @@ void printLinkedList(){
 
 void InsertAtEnd(char *book[6]) {
     struct Node *LinkedList = (struct Node*) malloc(sizeof(struct Node));
-    if (!LinkedList) {
-        perror("Failed to allocate memory for new node");
-        exit(1);
-    }
-
+    
     for (int i = 0; i < 6; i++) {
         LinkedList->book[i] = strdup(book[i]);
     }
