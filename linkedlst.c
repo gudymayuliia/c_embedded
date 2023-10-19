@@ -22,13 +22,9 @@ void printLinkedList(){
 
 void InsertAtEnd(char *book[6]) {
     struct Node *LinkedList = (struct Node*) malloc(sizeof(struct Node));
-    if (!LinkedList) {
-        perror("Failed to allocate memory for new node");
-        exit(1);
-    }
-
+   
     for (int i = 0; i < 6; i++) {
-        LinkedList->book[i] = strdup(book[i]);
+        LinkedList->book[i] = book[i];
     }
     LinkedList->nextPtr = NULL;
 
@@ -46,15 +42,13 @@ void InsertAtEnd(char *book[6]) {
 void freeLinkedList() {
     struct Node *current = head;
     while (current != NULL) {
-        for (int i = 0; i < 6; i++) {
-            free(current->book[i]);  // Free each string inside the book array
-        }
-        struct Node *temp = current;
+        struct Node *p = current;
         current = current->nextPtr;
-        free(temp);  // Free the node itself
+        free(p);  // Only free the node itself
     }
-    head = NULL;  // Optionally, reset the head pointer
+    head = NULL;  
 }
+
 
 
 int main(void){
