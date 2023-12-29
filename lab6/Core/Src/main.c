@@ -165,62 +165,62 @@ void CS43L22_Beep(soundToneType pitch, uint32_t duration_ms)
 	TxBuffer[1] = 0x00;		// Value (volume and off time)
 	HAL_I2C_Master_Transmit(&hi2c1, CS43L22_I2C_ADDRESS, (uint8_t*) &TxBuffer, 2, I2C_TIMEOUT);
 
-	// Set sound frequency
+
 	TxBuffer[0] = 0x1C;
 
-	// Register address
+
 	switch (pitch)
 	{
 	    case C4:
-	        TxBuffer[1] = 0b00000000;  // Value for 260.87 Hz
+	        TxBuffer[1] = 0b00000000;  // 260.87 Hz
 	        break;
 	    case C5:
-	        TxBuffer[1] = 0b00010000;  // Value for 521.74 Hz
+	        TxBuffer[1] = 0b00010000;  // 521.74 Hz
 	        break;
 	    case D5:
-	        TxBuffer[1] = 0b00100000;  // Value for 587.37 Hz
+	        TxBuffer[1] = 0b00100000;  // 587.37 Hz
 	        break;
 	    case E5:
-	        TxBuffer[1] = 0b00110000;  // Value for 666.67 Hz
+	        TxBuffer[1] = 0b00110000;  // 666.67 Hz
 	        break;
 	    case F5:
-	        TxBuffer[1] = 0b01000000;  // Value for 705.88 Hz
+	        TxBuffer[1] = 0b01000000;  // 705.88 Hz
 	        break;
 	    case G5:
-	        TxBuffer[1] = 0b01010000;  // Value for 774.19 Hz
+	        TxBuffer[1] = 0b01010000;  // 774.19 Hz
 	        break;
 	    case A5:
-	        TxBuffer[1] = 0b01100000;  // Value for 888.89 Hz
+	        TxBuffer[1] = 0b01100000;  // 888.89 Hz
 	        break;
 	    case B5:
-	        TxBuffer[1] = 0b01110000;  // Value for 1000.00 Hz
+	        TxBuffer[1] = 0b01110000;  // 1000.00 Hz
 	        break;
 	    case C6:
-	        TxBuffer[1] = 0b10000000;  // Value for 1043.48 Hz
+	        TxBuffer[1] = 0b10000000;  // 1043.48 Hz
 	        break;
 	    case D6:
-	        TxBuffer[1] = 0b10010000;  // Value for 1200.00 Hz
+	        TxBuffer[1] = 0b10010000;  // 1200.00 Hz
 	        break;
 	    case E6:
-	        TxBuffer[1] = 0b10100000;  // Value for 1333.33 Hz
+	        TxBuffer[1] = 0b10100000;  // 1333.33 Hz
 	        break;
 	    case F6:
-	        TxBuffer[1] = 0b10110000;  // Value for 1411.76 Hz
+	        TxBuffer[1] = 0b10110000;  // 1411.76 Hz
 	        break;
-	    // Note that G6 had the same value as E5, which seems like an error. Assuming it was meant to be sequential:
+
 	    case G6:
-	        TxBuffer[1] = 0b11000000;  // Value for 1600.00 Hz
+	        TxBuffer[1] = 0b11000000;  // 1600.00 Hz
 	        break;
 	    case A6:
-	        TxBuffer[1] = 0b11010000;  // Value for 1714.29 Hz
+	        TxBuffer[1] = 0b11010000;  // 1714.29 Hz
 	        break;
 	    case B6:
-	        TxBuffer[1] = 0b11100000;  // Value for 2000.00 Hz
+	        TxBuffer[1] = 0b11100000;  // 2000.00 Hz
 	        break;
 
 		case MAX_VALUE:
 		default:
-			TxBuffer[1] = 0x00;		// Value (frequency and on time)
+			TxBuffer[1] = 0x00;
 			break;
 	}
 	HAL_I2C_Master_Transmit(&hi2c1, CS43L22_I2C_ADDRESS, (uint8_t*) &TxBuffer, 2, I2C_TIMEOUT);
